@@ -11,8 +11,18 @@ public class AList {
         size = 0;
     }
 
+    /** Resizes the array by factor N. */
+    private void resize(int n) {
+        int[] a = new int[size * n];
+        System.arraycopy(items, 0, a, 0, size);
+        items = a;
+    }
+
     /** Inserts X into the back of the list. */
     public void addLast(int x) {
+        if (size == items.length) {
+            resize(10);
+        }
         items[size] = x;
         size ++;
     }
